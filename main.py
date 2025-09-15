@@ -583,8 +583,11 @@ class QuizRightPanelFrame(BaseFrame):
     def section_area(self):
         outer_frame = ttk.Frame(self)
         outer_frame.grid(row=1, column=0, sticky=NSEW, pady=5, padx=2)
-        # outer_frame.grid_rowconfigure(0, weight=1)
-        outer_frame.grid_columnconfigure(0, weight=1) # Center the content
+
+        # Allow outer_frame's row 1 (canvas_frame) to expand vertically
+        outer_frame.grid_rowconfigure(0, weight=0)  # label row
+        outer_frame.grid_rowconfigure(1, weight=1)  # canvas row MUST expand
+        outer_frame.grid_columnconfigure(0, weight=1)
 
         section_lbl = ttk.Label(
             outer_frame, text="SECTION : टेस्ट",
